@@ -22,18 +22,17 @@
 
     return service;
 
-    function getToken() {
+    function getUser() {
       var token = localStorage.getItem('user-token');
 
       if (token) {
 
       }
 
+      return 'injected';
+
     }
 
-    
-
-      // create the filtering function we will call from here
     
     
   }

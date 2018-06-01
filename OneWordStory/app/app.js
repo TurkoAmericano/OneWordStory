@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
     
     var app = angular.module('app', [
@@ -9,6 +9,7 @@
 
         // Custom modules 
         'common',           // common functions, logger, spinner
+        'auth',
         'common.bootstrap', // bootstrap dialog wrapper functions
 
         // 3rd Party Modules

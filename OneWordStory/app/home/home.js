@@ -1,11 +1,13 @@
 (function () {
     'use strict';
     var controllerId = 'home';
-    angular.module('app').controller(controllerId, ['common', 'datacontext', dashboard]);
+    angular.module('app').controller(controllerId, ['common', 'datacontext', 'auth', home]);
 
-    function dashboard(common, datacontext) {
+  function home(common, datacontext, auth) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
+
+    alert('token: ' + auth.getUser());
 
         var vm = this;
         vm.news = {

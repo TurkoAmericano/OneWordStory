@@ -1,4 +1,4 @@
-﻿(function () { 
+(function () { 
     'use strict';
     
     var controllerId = 'shell';
@@ -25,7 +25,6 @@
         activate();
 
         function activate() {
-            logSuccess('Hot Towel Angular loaded!', null, true);
             common.activateController([], controllerId);
         }
 
