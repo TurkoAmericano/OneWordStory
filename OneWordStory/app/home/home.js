@@ -1,14 +1,12 @@
 (function () {
     'use strict';
     var controllerId = 'home';
-    angular.module('app').controller(controllerId, ['common', 'datacontext', 'auth', home]);
+  angular.module('app').controller(controllerId, ['common', 'auth', home]);
 
-  function home(common, datacontext, auth) {
+  function home(common, auth) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
-
-    alert('token: ' + auth.getUser());
-
+            
         var vm = this;
         vm.news = {
             title: 'One Word Story',
@@ -21,8 +19,11 @@
         activate();
 
         function activate() {
-            var promises = [];
-            common.activateController(promises, controllerId);
+          var promises = [auth.getUser()];
+          common.activateController(promises, controllerId);
+
+          
+
         }
 
         

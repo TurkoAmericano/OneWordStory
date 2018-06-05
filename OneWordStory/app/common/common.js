@@ -27,7 +27,7 @@
     commonModule.factory('common',
         ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', common]);
 
-    function common($q, $rootScope, $timeout, commonConfig, logger) {
+  function common($q, $rootScope, $timeout, commonConfig, logger) {
         var throttles = {};
 
         var service = {

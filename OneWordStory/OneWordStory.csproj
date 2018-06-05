@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -182,7 +185,7 @@
     <Content Include="app\admin\admin.html" />
     <Content Include="app\admin\admin.js" />
     <Content Include="app\app.js" />
-    <Content Include="app\common\auth.js" />
+    <Content Include="app\services\auth.js" />
     <Content Include="app\common\bootstrap\bootstrap.dialog.js" />
     <Content Include="app\common\common.js" />
     <Content Include="app\common\logger.js" />
@@ -198,6 +201,8 @@
     <Content Include="app\layout\sidebar.js" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
+    <Content Include="app\login\login.html" />
+    <Content Include="app\login\login.js" />
     <Content Include="app\services\datacontext.js" />
     <Content Include="app\services\directives.js" />
     <Content Include="Content\bootstrap-theme.css" />

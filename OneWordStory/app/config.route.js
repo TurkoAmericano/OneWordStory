@@ -39,7 +39,17 @@
                         content: '<i class="fa fa-lock"></i> Admin'
                     }
                 }
+          }, {
+            url: '/login',
+            config: {
+              title: 'login',
+              templateUrl: 'app/login/login.html',
+              settings: {
+                nav: 2,
+                content: '<i class="fa fa-login"></i> Login'
+              }
             }
+          }
         ];
     }
 })();
