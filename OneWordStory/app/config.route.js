@@ -49,6 +49,15 @@
                 content: '<i class="fa fa-login"></i> Login'
               }
             }
+          }, {
+            url: '/signup',
+            config: {
+              title: 'signup',
+              templateUrl: 'app/signup/signup.html',
+              settings: {
+                nav: 0
+              }
+            }
           }
         ];
     }

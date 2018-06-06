@@ -2,31 +2,30 @@
     'use strict';
 
     var serviceId = 'datacontext';
-    angular.module('app').factory(serviceId, ['common', datacontext]);
+    angular.module('app').factory(serviceId, ['common','$http', datacontext]);
 
-    function datacontext(common) {
+  function datacontext(common, $http) {
         var $q = common.$q;
 
         var service = {
-            getPeople: getPeople,
-            getMessageCount: getMessageCount
+          createUser: createUser,
         };
 
         return service;
 
-        function getMessageCount() { return $q.when(72); }
-
-        function getPeople() {
-            var people = [
-                { firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida' },
-                { firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California' },
-                { firstName: 'Colleen', lastName: 'Jones', age: 21, location: 'New York' },
-                { firstName: 'Madelyn', lastName: 'Green', age: 18, location: 'North Dakota' },
-                { firstName: 'Ella', lastName: 'Jobs', age: 18, location: 'South Dakota' },
-                { firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina' },
-                { firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming' }
-            ];
-            return $q.when(people);
+        function createUser(user) {
+          $http.post("api/create-user/", user)
+            .then(function (response) {
+              if (!response.data) {
+                window.location == '/home';
+              } else {
+                localStorage.setItem('userId', response.data.UserId.toString())
+                localStorage.setItem('full-name', response.data.FirstName.toString() + ' ' + response.data.LastName.toString());
+                localStorage.setItem('user-token', response.data.Token.toString());
+              }
+            }, function myError(response) {
+              return $q.when(null);
+            });
         }
     }
 })();

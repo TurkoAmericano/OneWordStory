@@ -1,0 +1,29 @@
+<div class="container" data-ng-controller="signup as vm">
+  <div class="row" style="margin-top: 200px;">
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-5 col-md-3">
+      <div class="form-login">
+        <h4>Please create a new account</h4>
+        <input type="text" id="first-name" class="form-control input-sm chat-input" placeholder="first name"  ng-model="vm.user.FirstName" />
+        </br>
+        <input type="text" id="last-name" class="form-control input-sm chat-input" placeholder="last name"  ng-model="vm.user.LastName" />
+        </br>
+        <input type="text" id="email" class="form-control input-sm chat-input" placeholder="email"  ng-model="vm.user.Email" />
+        </br>
+        <input type="text" id="password" class="form-control input-sm chat-input" placeholder="password"  ng-model="vm.user.Password" />
+        </br>
+        <input type="text" id="confirm-password" class="form-control input-sm chat-input" placeholder="confirm password" />
+        </br>
+        <div class="wrapper" style="padding-top: 20px;">
+          <span class="group-btn">
+            <button ng-click="vm.newUser()" class="btn btn-primary btn-md">create user <i class="fa fa-users"></i></button>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

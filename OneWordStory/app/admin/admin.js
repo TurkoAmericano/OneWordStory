@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
     var controllerId = 'admin';
     angular.module('app').controller(controllerId, ['common', admin]);

@@ -1,4 +1,5 @@
 using OneWordStory.Data.Repositories;
+using OneWordStory.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,14 @@ namespace OneWordStory.Controllers
     public JsonResult GetUserByToken(string token)
     {
       var user = _userRepository.GetUserByToken(token);
+      return Json(user);
+    }
+
+    [HttpPost]
+    [Route("api/create-user/")]
+    public JsonResult CreateUser(User user)
+    {
+      
       return Json(user);
     }
 

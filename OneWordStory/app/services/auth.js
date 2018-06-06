@@ -14,7 +14,10 @@
     return service;
 
     function getUser() {
-      if (localStorage.getItem('user-token') === null) $location.path('/login');
+      if (localStorage.getItem('user-token') === null) {
+        $location.path('/login');
+        return $q.when(null);
+      }
 
       var token = localStorage.getItem('user-token');
 
@@ -25,7 +28,7 @@
               window.location == '/login';
             } else {
               localStorage.setItem('userId', response.data.UserId.toString())
-              localStorage.setItem('fullName', response.data.FirstName.toString() + ' ' + response.data.LastName.toString());
+              localStorage.setItem('full-name', response.data.FirstName.toString() + ' ' + response.data.LastName.toString());
             }
           }, function myError(response) {
             return $q.when(null);
