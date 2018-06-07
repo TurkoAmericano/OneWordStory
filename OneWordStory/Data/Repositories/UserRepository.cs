@@ -12,6 +12,7 @@ namespace OneWordStory.Data.Repositories
   public interface IUserRepository
   {
     User GetUserByToken(string token);
+    void CreateUser(User user);
   }
 
   public class UserRepository : IUserRepository
@@ -34,5 +35,14 @@ namespace OneWordStory.Data.Repositories
         return user;
       }
     }
+
+    public void CreateUser(User user)
+    {
+      using (var db = new SqlConnection(_connectionString))
+      {
+        db.Query<User>(_userSql.CreateUser, user).FirstOrDefault();
+      }
+    }
+
   }
 }

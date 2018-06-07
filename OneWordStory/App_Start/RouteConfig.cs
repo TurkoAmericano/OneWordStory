@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +11,7 @@ namespace OneWordStory
   {
     public static void RegisterRoutes(RouteCollection routes)
     {
+
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
       routes.MapRoute(

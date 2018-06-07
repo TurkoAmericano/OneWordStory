@@ -8,7 +8,7 @@
     var vm = this;
 
     vm.newUser = newUser;
-    vm.user = [];
+    vm.user = {};
 
     activate();
 

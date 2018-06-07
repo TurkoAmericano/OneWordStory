@@ -1,16 +1,14 @@
 using OneWordStory.Data.Repositories;
 using OneWordStory.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web.Http;
 
 namespace OneWordStory.Controllers
 {
-  public class UserController : Controller
+  public class UserController : ApiController
   {
-
     private readonly IUserRepository _userRepository;
 
     public UserController(IUserRepository userRepository)
@@ -19,18 +17,25 @@ namespace OneWordStory.Controllers
     }
 
     [Route("api/get-user-by-token/{token}")]
-    public JsonResult GetUserByToken(string token)
+    public User GetUserByToken(string token)
     {
       var user = _userRepository.GetUserByToken(token);
-      return Json(user);
+      return user;
     }
 
     [HttpPost]
     [Route("api/create-user/")]
-    public JsonResult CreateUser(User user)
+    public string CreateUser(User user)
     {
-      
-      return Json(user);
+
+      byte[] data = Encoding.ASCII.GetBytes(user.Password);
+      data = new SHA256Managed().ComputeHash(data);
+      user.Password = Encoding.ASCII.GetString(data);
+
+      user.Token = Guid.NewGuid().ToString();
+
+      _userRepository.CreateUser(user);
+      return user.Token;
     }
 
   }
