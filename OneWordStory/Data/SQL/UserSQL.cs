@@ -34,5 +34,13 @@ namespace OneWordStory.Data.SQL
            ,@Password
            ,@Token)";
 
+
+    public string LoginUser => @"SELECT UserId
+      ,FirstName
+      ,LastName
+      ,Email
+      ,Token
+      FROM [User] where Email = @Email and Password = @Password";
+
   }
 }

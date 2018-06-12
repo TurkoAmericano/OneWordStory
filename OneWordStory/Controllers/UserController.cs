@@ -38,5 +38,21 @@ namespace OneWordStory.Controllers
       return user.Token;
     }
 
+    [HttpPost]
+    [Route("api/login-user/")]
+    public User LoginUser(User user)
+    {
+
+      byte[] data = Encoding.ASCII.GetBytes(user.Password);
+      data = new SHA256Managed().ComputeHash(data);
+      user.Password = Encoding.ASCII.GetString(data);
+
+      user.Token = Guid.NewGuid().ToString();
+
+      _userRepository.LoginUser(user);
+      return user;
+
+    }
+
   }
 }

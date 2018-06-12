@@ -4,23 +4,31 @@
 
     </div>
 
-    <div class="row">
-      <div class="col-md-offset-5 col-md-3">
-        <div class="form-login">
-          <h4>Please login, or click sign up to create a new account</h4>
-          <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
-          </br>
-          <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
-          </br>
-          <div class="wrapper" style="padding-top: 20px;">
-            <span class="group-btn">
-              <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
-              <a href="#/signup" class="btn btn-primary btn-md">sign up <i class="fa fa-users"></i></a>
-            </span>
+    <form class="ng-pristine ng-invalid ng-invalid-required" name="frm">
+      <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+          <div class="form-login">
+            <h4>Please login, or click sign up to create a new account</h4>
+            <ul ng-class="{last: $last}">
+              <li ng-repeat="e in vm.errors">
+                {{e}}
+              </li>
+            </ul>
+            <input type="text" id="email" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.user.Email" />
+            </br>
+            <input type="text" id="password" class="form-control input-sm chat-input" placeholder="password" ng-model="vm.user.Password" />
+            </br>
+            <div class="wrapper" style="padding-top: 20px;">
+              <span class="group-btn">
+                <button ng-click="vm.login(frm)" type="submit" class="btn btn-primary btn-md">login <i class="fa fa-users"></i></button>
+                <a href="#/signup" class="btn btn-primary btn-md">sign up <i class="fa fa-users"></i></a>
+              </span>
+            </div>
           </div>
+
         </div>
 
       </div>
-    </div>
+    </form>
   </div>
 </div>
