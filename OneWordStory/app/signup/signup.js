@@ -20,7 +20,8 @@
 
     function newUser() {
       if (validate()) {
-      datacontext.createUser(vm.user).then(function () {
+        datacontext.createUser(vm.user).then(function () {
+          alert(5);
         });
       }
     }

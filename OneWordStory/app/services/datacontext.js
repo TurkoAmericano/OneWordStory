@@ -15,7 +15,7 @@
     return service;
 
     function createUser(user) {
-      $http.post("api/create-user/", user)
+      return $http.post("api/create-user/", user)
         .then(function (response) {
           if (!response.data) {
             window.location == '/home';
@@ -31,7 +31,7 @@
     }
 
     function loginUser(user) {
-      $http.post("api/login-user/", user)
+      return $http.post("api/login-user/", user)
         .then(function (response) {
           if (!response.data) {
             window.location == '/home';

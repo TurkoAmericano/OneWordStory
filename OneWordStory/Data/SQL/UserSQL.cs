@@ -10,6 +10,8 @@ namespace OneWordStory.Data.SQL
   {
     string GetUserByToken { get;  }
     string CreateUser { get; }
+    string LoginUser { get; }
+    
   }
 
   public class UserSQL : IUserSQL

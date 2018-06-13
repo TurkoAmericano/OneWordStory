@@ -49,8 +49,8 @@ namespace OneWordStory.Controllers
 
       user.Token = Guid.NewGuid().ToString();
 
-      _userRepository.LoginUser(user);
-      return user;
+      var returnUser = _userRepository.LoginUser(user);
+      return returnUser;
 
     }
 

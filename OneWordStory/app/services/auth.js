@@ -2,9 +2,9 @@
   'use strict';
 
   var serviceId = 'auth';
-  angular.module('app').factory(serviceId, ['common', '$location', auth]);
+  angular.module('app').factory(serviceId, ['common', '$location', '$http', auth]);
 
-  function auth(common, $location) {
+  function auth(common, $location, $http) {
     var $q = common.$q;
 
     var service = {

@@ -41,7 +41,7 @@ namespace OneWordStory.Data.Repositories
     {
       using (var db = new SqlConnection(_connectionString))
       {
-        var returnValue = db.Query<User>(_userSql.GetUserByToken, user).FirstOrDefault();
+        var returnValue = db.Query<User>(_userSql.LoginUser, user).FirstOrDefault();
         return returnValue;
       }
     }
