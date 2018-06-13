@@ -185,6 +185,8 @@
     <Content Include="app\admin\admin.html" />
     <Content Include="app\admin\admin.js" />
     <Content Include="app\app.js" />
+    <Content Include="app\create-story\create-story.html" />
+    <Content Include="app\create-story\create-story.js" />
     <Content Include="app\services\auth.js" />
     <Content Include="app\common\bootstrap\bootstrap.dialog.js" />
     <Content Include="app\common\common.js" />

@@ -21,7 +21,7 @@ namespace OneWordStory.Data.SQL
       ,LastName
       ,Email
       ,Token
-      FROM User where Token = @Token";
+      FROM [User] where Token = @Token";
 
     public string CreateUser => @"INSERT INTO [User]
            (FirstName

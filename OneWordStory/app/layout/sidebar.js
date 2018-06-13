@@ -1,4 +1,4 @@
-﻿(function () { 
+(function () { 
     'use strict';
     
     var controllerId = 'sidebar';
@@ -16,7 +16,11 @@
         
         function getNavRoutes() {
             vm.navRoutes = routes.filter(function(r) {
-                return r.config.settings && r.config.settings.nav;
+              return r.config.settings &&
+                r.config.settings.nav &&
+                (r.config.requireLogin !== 'LOGIN' || localStorage.getItem('user-token')) &&
+                (r.config.requireLogin !== 'NOT_LOGIN' || !localStorage.getItem('user-token'));
+
             }).sort(function(r1, r2) {
                 return r1.config.settings.nav - r2.config.settings.nav;
             });

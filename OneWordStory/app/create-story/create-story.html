@@ -1,0 +1,31 @@
+<div data-ng-controller="createStory as vm">
+  <div class="container">
+    <div class="row" style="margin-top: 200px;">
+
+    </div>
+
+    <form class="ng-pristine ng-invalid ng-invalid-required" name="frm">
+      <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+          <div class="form-login">
+            <h4>To create a story, enter the first word and include the emails of all the friends you want to contribute to the story</h4>
+            <ul ng-class="{last: $last}">
+              <li ng-repeat="e in vm.errors">
+                {{e}}
+              </li>
+            </ul>
+            <input type="text" id="first-word" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.story.firstWord" />
+            </br>
+            <div class="wrapper" style="padding-top: 20px;">
+              <span class="group-btn">
+                <button ng-click="vm.createStory()" type="submit" class="btn btn-primary btn-md">make a new story <i class="fa fa-users"></i></button>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

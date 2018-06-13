@@ -22,7 +22,7 @@
       var token = localStorage.getItem('user-token');
 
       if (token) {
-        $http.get("api/get-user-by-token/" + token)
+        return $http.get("api/get-user-by-token/" + token)
           .then(function (response) {
             if (!response.data) {
               window.location == '/login';
