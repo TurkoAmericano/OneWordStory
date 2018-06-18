@@ -9,7 +9,8 @@
 
     var service = {
       createUser: createUser,
-      loginUser: loginUser
+      loginUser: loginUser,
+      createStory: createStory
     };
 
     return service;
@@ -23,6 +24,19 @@
             localStorage.setItem('userId', response.data.UserId.toString())
             localStorage.setItem('full-name', response.data.FirstName.toString() + ' ' + response.data.LastName.toString());
             localStorage.setItem('user-token', response.data.Token.toString());
+            return $q.when(response.date);
+          }
+        }, function myError(response) {
+          return $q.when(null);
+        });
+    }
+
+    function createStory(story) {
+      return $http.post("api/create-story/", story)
+        .then(function (response) {
+          if (!response.data) {
+            
+          } else {
             return $q.when(response.date);
           }
         }, function myError(response) {

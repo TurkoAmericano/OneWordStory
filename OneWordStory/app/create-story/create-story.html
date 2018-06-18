@@ -14,8 +14,23 @@
                 {{e}}
               </li>
             </ul>
-            <input type="text" id="first-word" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.story.firstWord" />
-            </br>
+
+            <div class="wrapper" style="padding-top: 20px;">
+              <input type="text" id="title" class="form-control input-sm chat-input" placeholder="title" ng-model="vm.CreateStory.Title" />
+            </div>
+
+            <div class="wrapper" style="padding-top: 20px;">
+              <input type="text" id="first-word" class="form-control input-sm chat-input" placeholder="first word" ng-model="vm.CreateStory.FirstWord" />
+            </div>
+
+            <div class="wrapper" id="emails" style="padding-top: 20px;">
+              <div ng-repeat="(key, value) in vm.emails">
+                <input type="text" id="email" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.emails[key]" value="{{vm.emails[key]}}" /><br/>
+              </div>
+              <br />
+              <button ng-if="vm.emails[0] !== ''" ng-click="vm.addNewEmail()" type="submit" class="btn btn-primary btn-md">+<i class="fa fa-email"></i></button>
+            </div>
+
             <div class="wrapper" style="padding-top: 20px;">
               <span class="group-btn">
                 <button ng-click="vm.createStory()" type="submit" class="btn btn-primary btn-md">make a new story <i class="fa fa-users"></i></button>

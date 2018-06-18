@@ -1,4 +1,4 @@
-﻿// Include in index.html so that app level exceptions are handled.
+// Include in index.html so that app level exceptions are handled.
 // Exclude from testRunner.html which should run exactly what it wants to run
 (function () {
     'use strict';
@@ -19,7 +19,8 @@
         var logError = logger.getLogFn('app', 'error');
         return function (exception, cause) {
             $delegate(exception, cause);
-            if (appErrorPrefix && exception.message.indexOf(appErrorPrefix) === 0) { return; }
+          if (appErrorPrefix && exception.message.indexOf(appErrorPrefix) === 0) { return; }
+          if (appErrorPrefix && exception.message.indexOf('ngRepeat: dupes') !== 0) { return; }
 
             var errorData = { exception: exception, cause: cause };
             var msg = appErrorPrefix + exception.message;
