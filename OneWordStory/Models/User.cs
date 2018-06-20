@@ -7,7 +7,15 @@ namespace OneWordStory.Models
 {
   public class User
   {
-    
+
+    public User()
+    {
+      FirstName = "";
+      LastName = "";
+      Password = "";
+
+    }
+
     public int UserId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

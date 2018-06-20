@@ -1,5 +1,7 @@
 using OneWordStory.Data.Repositories;
 using OneWordStory.Data.SQL;
+using OneWordStory.Emails;
+using OneWordStory.Services;
 using System;
 
 using Unity;
@@ -47,6 +49,8 @@ namespace OneWordStory
 
 
             container.RegisterType<IUserSQL, UserSQL>();
+            container.RegisterType<IEmailer, Emailer>();
+            container.RegisterType<IUserService, UserService>();
 
     }
     }

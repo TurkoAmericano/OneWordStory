@@ -34,7 +34,8 @@ namespace OneWordStory.Data.SQL
            ,@LastName
            ,@Email
            ,@Password
-           ,@Token)";
+           ,@Token);
+          SELECT SCOPE_IDENTITY()";
 
 
     public string LoginUser => @"SELECT UserId

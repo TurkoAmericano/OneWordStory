@@ -27,6 +27,10 @@
       }
     }
 
+    function trackByFn(index, item) {
+      return index;
+    }
+
     function createStory() {
       if (validate()) {
         vm.CreateStory.Emails = vm.emails;

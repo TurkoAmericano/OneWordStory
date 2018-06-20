@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Configuration;
 using System.Data.SqlClient;
 using OneWordStory.Data.SQL;
+using System.Data;
 
 namespace OneWordStory.Data.Repositories
 {
@@ -12,7 +13,7 @@ namespace OneWordStory.Data.Repositories
   public interface IUserRepository
   {
     User GetUserByToken(string token);
-    void CreateUser(User user);
+    int CreateUser(User user, IDbTransaction transaction = null);
     User LoginUser(User user);
   }
 
@@ -46,11 +47,11 @@ namespace OneWordStory.Data.Repositories
       }
     }
 
-    public void CreateUser(User user)
+    public int CreateUser(User user, IDbTransaction transaction = null)
     {
       using (var db = new SqlConnection(_connectionString))
       {
-        db.Query<User>(_userSql.CreateUser, user).FirstOrDefault();
+        return db.Query<int>(_userSql.CreateUser, user, transaction: transaction).FirstOrDefault();
       }
     }
 

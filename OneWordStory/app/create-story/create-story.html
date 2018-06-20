@@ -24,8 +24,8 @@
             </div>
 
             <div class="wrapper" id="emails" style="padding-top: 20px;">
-              <div ng-repeat="(key, value) in vm.emails">
-                <input type="text" id="email" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.emails[key]" value="{{vm.emails[key]}}" /><br/>
+              <div ng-repeat="(key, value) in vm.emails track by $index">
+                <input type="text" id="email" class="form-control input-sm" placeholder="email" ng-model="vm.emails[$index]" value="{{vm.emails[$index]}}" /><br/>
               </div>
               <br />
               <button ng-if="vm.emails[0] !== ''" ng-click="vm.addNewEmail()" type="submit" class="btn btn-primary btn-md">+<i class="fa fa-email"></i></button>
