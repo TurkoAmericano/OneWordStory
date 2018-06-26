@@ -12,48 +12,43 @@ namespace OneWordStory.Data.Repositories
 
   public interface IUserRepository
   {
-    User GetUserByToken(string token);
-    int CreateUser(User user, IDbTransaction transaction = null);
-    User LoginUser(User user);
+    User GetUserByToken(IDbConnection conn, string token);
+    int CreateUser(IDbConnection conn, User user);
+    User LoginUser(IDbConnection conn, User user);
+    void AddFriend(IDbConnection conn, int userId, int friendId);
   }
 
   public class UserRepository : IUserRepository
   {
 
-    string _connectionString;
     IUserSQL _userSql;
-
+    
     public UserRepository(IUserSQL userSql)
     {
       _userSql = userSql;
-      _connectionString = WebConfigurationManager.AppSettings["ConnectionString"];
+      
     }
 
-    public User GetUserByToken(string token)
+    public User GetUserByToken(IDbConnection conn, string token)
     {
-      using (var db = new SqlConnection(_connectionString))
-      {
-        var user = db.Query<User>(_userSql.GetUserByToken, new { Token = token }).FirstOrDefault();
+        var user = conn.Query<User>(_userSql.GetUserByToken, new { Token = token }).FirstOrDefault();
         return user;
-      }
     }
 
-    public User LoginUser(User user)
+    public User LoginUser(IDbConnection conn, User user)
     {
-      using (var db = new SqlConnection(_connectionString))
-      {
-        var returnValue = db.Query<User>(_userSql.LoginUser, user).FirstOrDefault();
+        var returnValue = conn.Query<User>(_userSql.LoginUser, user).FirstOrDefault();
         return returnValue;
-      }
     }
 
-    public int CreateUser(User user, IDbTransaction transaction = null)
+    public int CreateUser(IDbConnection conn, User user)
     {
-      using (var db = new SqlConnection(_connectionString))
-      {
-        return db.Query<int>(_userSql.CreateUser, user, transaction: transaction).FirstOrDefault();
-      }
+        return conn.Query<int>(_userSql.CreateUser, user).FirstOrDefault();
     }
 
+    public void AddFriend(IDbConnection conn, int userId, int friendId)
+    {
+      conn.Execute(_userSql.AddFriend, new { UserId = userId, FriendId = friendId });
+    }
   }
 }

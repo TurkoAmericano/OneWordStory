@@ -5,11 +5,13 @@ using System.Web;
 
 namespace OneWordStory.Models
 {
-  public class CreateStory
+  public class AddUserToStory
   {
+
+    public int StoryId { get; set; }
     public int UserId { get; set; }
-    public string Title { get; set; }
-    public string FirstWord { get; set; }
-    public List<string> Emails { get; set; }
+    public int TurnOrder { get; set; }
+    public bool IsCurrentTurn { get; set; }
+
   }
 }

@@ -11,7 +11,9 @@ namespace OneWordStory.Data.SQL
     string GetUserByToken { get;  }
     string CreateUser { get; }
     string LoginUser { get; }
-    
+
+    string AddFriend { get; }
+
   }
 
   public class UserSQL : IUserSQL
@@ -35,7 +37,7 @@ namespace OneWordStory.Data.SQL
            ,@Email
            ,@Password
            ,@Token);
-          SELECT SCOPE_IDENTITY()";
+          SELECT SCOPE_IDENTITY();";
 
 
     public string LoginUser => @"SELECT UserId
@@ -45,5 +47,11 @@ namespace OneWordStory.Data.SQL
       ,Token
       FROM [User] where Email = @Email and Password = @Password";
 
+    public string AddFriend => @"INSERT INTO [dbo].[Friend]
+           ([UserId]
+           ,[FriendId])
+     VALUES
+           (@UserId
+           ,@FriendId)";
   }
 }
